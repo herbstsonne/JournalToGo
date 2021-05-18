@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="JournalToGo.Views.DailyEntryPage"
+             Title="{Binding Title}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Command="{Binding SaveEntryCommand}"/>
+    </ContentPage.ToolbarItems>
+    <StackLayout Spacing="20" Padding="15">
+        <DatePicker Date="{Binding Day, Mode=TwoWay}" FontSize="Medium" FontAttributes="Bold"/>
+        <Entry Text="{Binding Headline, Mode=TwoWay}" Placeholder="Your day in one word"/>
+        <Editor Text="{Binding DailyThoughtsText, Mode=TwoWay}" Placeholder="How are you?" AutoSize="TextChanges"/>
+    </StackLayout>
+    
+</ContentPage>
