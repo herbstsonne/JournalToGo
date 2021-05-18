@@ -1,4 +1,5 @@
 ﻿using System;
+using JournalToGo.Models;
 using Xamarin.Forms;
 
 namespace JournalToGo.ViewModels
@@ -52,10 +53,10 @@ namespace JournalToGo.ViewModels
 
         private async void OnSave()
         {
-            Models.JournalEntry newItem = new Models.JournalEntry()
+            JournalEntry newItem = new JournalEntry()
             {
                 Id = Guid.NewGuid().ToString(),
-                Day = Day,
+                Day = Day.ToShortDateString(),
                 Headline = Headline,
                 DailyThoughtsText = DailyThoughtsText
             };

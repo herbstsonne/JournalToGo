@@ -20,7 +20,7 @@ namespace JournalToGo.ViewModels
 
         public EntriesViewModel()
         {
-            Title = "Browse";
+            Title = "All entries";
             Entries = new ObservableCollection<JournalEntry>();
             LoadEntriesCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
@@ -37,7 +37,7 @@ namespace JournalToGo.ViewModels
             {
                 Entries.Clear();
                 var items = await DataStore.GetEntriesAsync(true);
-                items = items.ToList().OrderByDescending(l => l.Day);
+                items = items.ToList().OrderByDescending(l => Convert.ToDateTime(l.Day));
                 foreach (var item in items)
                 {
                     Entries.Add(item);

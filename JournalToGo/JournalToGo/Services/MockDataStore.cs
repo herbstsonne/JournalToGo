@@ -14,12 +14,12 @@ namespace JournalToGo.Services
         {
             items = new List<JournalEntry>()
             {
-                new JournalEntry { Id = Guid.NewGuid().ToString(), Day = DateTime.Today, Headline = "Glückstag", DailyThoughtsText="This is an item description." },
-                new JournalEntry { Id = Guid.NewGuid().ToString(), Day = DateTime.Today, Headline = "Sonnenschein", DailyThoughtsText="This is an item description." },
-                new JournalEntry { Id = Guid.NewGuid().ToString(), Day = DateTime.Today, Headline = "Neuer Job", DailyThoughtsText="This is an item description." },
-                new JournalEntry { Id = Guid.NewGuid().ToString(), Day = DateTime.Today, Headline = "Relaxed", DailyThoughtsText="This is an item description." },
-                new JournalEntry { Id = Guid.NewGuid().ToString(), Day = DateTime.Today, Headline = "Urlaub", DailyThoughtsText="This is an item description." },
-                new JournalEntry { Id = Guid.NewGuid().ToString(), Day = DateTime.Today, Headline = "Happy", DailyThoughtsText="This is an item description." }
+                new JournalEntry { Id = Guid.NewGuid().ToString(), Day = DateTime.Now.ToShortDateString(), Headline = "Glückstag", DailyThoughtsText="This is an item description." },
+                new JournalEntry { Id = Guid.NewGuid().ToString(), Day = DateTime.Now.ToShortDateString(), Headline = "Sonnenschein", DailyThoughtsText="This is an item description." },
+                new JournalEntry { Id = Guid.NewGuid().ToString(), Day = DateTime.Now.ToShortDateString(), Headline = "Neuer Job", DailyThoughtsText="This is an item description." },
+                new JournalEntry { Id = Guid.NewGuid().ToString(), Day = DateTime.Now.ToShortDateString(), Headline = "Relaxed", DailyThoughtsText="This is an item description." },
+                new JournalEntry { Id = Guid.NewGuid().ToString(), Day = DateTime.Now.ToShortDateString(), Headline = "Urlaub", DailyThoughtsText="This is an item description." },
+                new JournalEntry { Id = Guid.NewGuid().ToString(), Day = DateTime.Now.ToShortDateString(), Headline = "Happy", DailyThoughtsText="This is an item description." }
             };
         }
 
