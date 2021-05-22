@@ -10,9 +10,14 @@ namespace JournalToGo.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Models.JournalEntry> DataStore => DependencyService.Get<IDataStore<Models.JournalEntry>>();
+        private IDataStore<JournalEntry> _dataStore;
+        public IDataStore<Models.JournalEntry> DataStore 
+        {
+            get { return _dataStore == null ? _dataStore = DependencyService.Get<IDataStore<Models.JournalEntry>>() : _dataStore; }
+            set { _dataStore = value; }
+        }
 
-        bool isBusy = false;
+    bool isBusy = false;
         public bool IsBusy
         {
             get { return isBusy; }

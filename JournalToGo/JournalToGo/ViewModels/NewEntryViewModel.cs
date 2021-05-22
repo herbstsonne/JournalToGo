@@ -64,6 +64,8 @@ namespace JournalToGo.ViewModels
             await DataStore.AddEntryAsync(newItem);
 
             // This will pop the current page off the navigation stack
+            if(Shell.Current == null)
+                return;
             await Shell.Current.GoToAsync("..");
         }
     }

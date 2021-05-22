@@ -35,6 +35,8 @@ namespace JournalToGo.ViewModels
                 savedEntry.DailyThoughtsText = DailyThoughtsText;
                 await DataStore.UpdateEntryAsync(savedEntry);
 
+                if (Shell.Current == null)
+                    return;
                 await Shell.Current.GoToAsync("..");
             }
             catch (Exception e)
