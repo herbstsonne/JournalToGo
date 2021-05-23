@@ -1,5 +1,4 @@
-﻿using JournalToGo.Models;
-using JournalToGo.ViewModels;
+﻿using JournalToGo.ViewModels;
 using Xamarin.Forms;
 
 namespace JournalToGo.Views

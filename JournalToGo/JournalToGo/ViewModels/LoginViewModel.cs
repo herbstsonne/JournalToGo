@@ -1,4 +1,5 @@
-﻿using JournalToGo.Views;
+﻿using JournalToGo.Services;
+using JournalToGo.Views;
 using System;
 using System.Collections.Generic;
 using System.Text;

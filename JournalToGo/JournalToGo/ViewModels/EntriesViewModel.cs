@@ -1,4 +1,5 @@
 ﻿using JournalToGo.Models;
+using JournalToGo.Services;
 using JournalToGo.Views;
 using System;
 using System.Collections.ObjectModel;
@@ -36,8 +37,8 @@ namespace JournalToGo.ViewModels
             try
             {
                 Entries.Clear();
-                var items = await DataStore.GetEntriesAsync(true);
-                items = items.ToList().OrderByDescending(l => Convert.ToDateTime(l.Day));
+                //var items = await DataStore.GetEntriesAsync(true);
+                var items = _journalContext.JournalEntry.ToList().OrderByDescending(l => Convert.ToDateTime(l.Day));
                 foreach (var item in items)
                 {
                     Entries.Add(item);
@@ -82,5 +83,6 @@ namespace JournalToGo.ViewModels
             // This will push the ItemDetailPage onto the navigation stack
             await Shell.Current.GoToAsync($"{nameof(DailyEntryPage)}?{nameof(DailyEntryViewModel.ItemId)}={item.Id}");
         }
+
     }
 }

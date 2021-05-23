@@ -1,4 +1,6 @@
-﻿using System;
+﻿using JournalToGo.Services;
+using JournalToGo.Views;
+using System;
 using System.Diagnostics;
 using Xamarin.Forms;
 
@@ -22,8 +24,8 @@ namespace JournalToGo.ViewModels
 
         private bool ValidateSave()
         {
-            return (!Equals(Day, savedEntry?.Day) || !Equals(Headline, savedEntry?.Headline) || !Equals(dailyThoughtsText, savedEntry?.DailyThoughtsText)) 
-                   | !String.IsNullOrWhiteSpace(headline) && !String.IsNullOrWhiteSpace(dailyThoughtsText);
+            return !Equals(Day, savedEntry?.Day) || (!Equals(Headline, savedEntry?.Headline) && !String.IsNullOrWhiteSpace(headline)) 
+                || (!Equals(dailyThoughtsText, savedEntry?.DailyThoughtsText)) && !String.IsNullOrWhiteSpace(dailyThoughtsText);
         }
 
         private async void OnSaveEntry()
@@ -33,7 +35,9 @@ namespace JournalToGo.ViewModels
                 savedEntry.Day = Day;
                 savedEntry.Headline = Headline;
                 savedEntry.DailyThoughtsText = DailyThoughtsText;
-                await DataStore.UpdateEntryAsync(savedEntry);
+                //await DataStore.UpdateEntryAsync(savedEntry);
+                _journalContext.JournalEntry.Update(savedEntry);
+                _journalContext.SaveChanges();
 
                 if (Shell.Current == null)
                     return;
@@ -90,7 +94,8 @@ namespace JournalToGo.ViewModels
         {
             try
             {
-                savedEntry = DataStore.GetEntryAsync(ItemId).Result;
+                //savedEntry = DataStore.GetEntryAsync(ItemId).Result;
+                savedEntry = _journalContext.JournalEntry.Find(ItemId);
                 Id = savedEntry.Id;
                 Day = savedEntry.Day;
                 Headline = savedEntry.Headline;

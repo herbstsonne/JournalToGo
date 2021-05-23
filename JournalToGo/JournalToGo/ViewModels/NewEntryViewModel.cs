@@ -1,5 +1,6 @@
 ﻿using System;
 using JournalToGo.Models;
+using JournalToGo.Services;
 using Xamarin.Forms;
 
 namespace JournalToGo.ViewModels
@@ -61,7 +62,9 @@ namespace JournalToGo.ViewModels
                 DailyThoughtsText = DailyThoughtsText
             };
 
-            await DataStore.AddEntryAsync(newItem);
+            //await DataStore.AddEntryAsync(newItem);
+            _journalContext.JournalEntry.Add(newItem);
+            _journalContext.SaveChanges();
 
             // This will pop the current page off the navigation stack
             if(Shell.Current == null)

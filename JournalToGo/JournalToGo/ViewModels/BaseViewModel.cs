@@ -8,14 +8,21 @@ using Xamarin.Forms;
 
 namespace JournalToGo.ViewModels
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public class BaseViewModel : INotifyPropertyChanged, IDisposable
     {
         private IDataStore<JournalEntry> _dataStore;
-        public IDataStore<Models.JournalEntry> DataStore 
+        protected readonly JournalingContext _journalContext;
+
+        public BaseViewModel()
         {
-            get { return _dataStore == null ? _dataStore = DependencyService.Get<IDataStore<Models.JournalEntry>>() : _dataStore; }
-            set { _dataStore = value; }
+            _journalContext = new JournalingContext();
         }
+
+        //public IDataStore<Models.JournalEntry> DataStore 
+        //{
+        //    get { return _dataStore == null ? _dataStore = DependencyService.Get<IDataStore<Models.JournalEntry>>() : _dataStore; }
+        //    set { _dataStore = value; }
+        //}
 
     bool isBusy = false;
         public bool IsBusy
@@ -55,5 +62,10 @@ namespace JournalToGo.ViewModels
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+
+        public void Dispose()
+        {
+            _journalContext.Dispose();
+        }
     }
 }

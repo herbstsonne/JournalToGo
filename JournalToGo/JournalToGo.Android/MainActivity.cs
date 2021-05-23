@@ -14,6 +14,7 @@ namespace JournalToGo.Droid
         {
             base.OnCreate(savedInstanceState);
 
+            SQLitePCL.Batteries_V2.Init();
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
