@@ -29,6 +29,7 @@ namespace JournalToGo.ViewModels
 
             AddEntryCommand = new Command(OnAddItem);
         }
+        
 
         async Task ExecuteLoadItemsCommand()
         {

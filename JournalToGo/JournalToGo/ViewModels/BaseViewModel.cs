@@ -18,13 +18,13 @@ namespace JournalToGo.ViewModels
             _journalContext = new JournalingContext();
         }
 
-        //public IDataStore<Models.JournalEntry> DataStore 
-        //{
-        //    get { return _dataStore == null ? _dataStore = DependencyService.Get<IDataStore<Models.JournalEntry>>() : _dataStore; }
-        //    set { _dataStore = value; }
-        //}
+        public IDataStore<JournalEntry> DataStore
+        {
+            get => _dataStore == null ? _dataStore = DependencyService.Get<IDataStore<JournalEntry>>() : _dataStore;
+            set { _dataStore = value; }
+        }
 
-    bool isBusy = false;
+        bool isBusy = false;
         public bool IsBusy
         {
             get { return isBusy; }

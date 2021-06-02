@@ -1,4 +1,5 @@
-﻿using JournalToGo.Services;
+﻿using System;
+using JournalToGo.Services;
 using JournalToGo.ViewModels;
 using Xamarin.Forms;
 
@@ -19,6 +20,13 @@ namespace JournalToGo.Views
         {
             base.OnAppearing();
             _viewModel.OnAppearing();
+        }
+
+        private void ToolbarItem_OnClicked(object sender, EventArgs e)
+        {
+            App.Current.UserAppTheme = 
+                App.Current.UserAppTheme == OSAppTheme.Light || App.Current.UserAppTheme == OSAppTheme.Unspecified ? 
+                OSAppTheme.Dark : OSAppTheme.Light;
         }
     }
 }
