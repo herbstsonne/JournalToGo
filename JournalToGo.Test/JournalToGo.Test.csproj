@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="FakeItEasy" Version="7.0.2" />
+    <PackageReference Include="Google.Apis.Books.v1" Version="1.51.0.2231" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
     <PackageReference Include="NSubstitute" Version="4.2.2" />
     <PackageReference Include="NSubstitute.Analyzers.CSharp" Version="1.0.14" />

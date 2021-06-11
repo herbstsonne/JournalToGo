@@ -10,13 +10,29 @@ namespace JournalToGo.ViewModels
         private DateTime day = DateTime.Now;
         private string headline;
         private string dailyThoughtsText;
+        private string searchBook;
 
         public NewEntryViewModel()
         {
             SaveCommand = new Command(OnSave, ValidateSave);
             CancelCommand = new Command(OnCancel);
+            SearchCommand = new Command(OnSearchBook, ValidateSearch);
             this.PropertyChanged +=
                 (_, __) => SaveCommand.ChangeCanExecute();
+            this.PropertyChanged +=
+                (_, __) => SearchCommand.ChangeCanExecute();
+        }
+
+        private bool ValidateSearch(object arg)
+        {
+            return !String.IsNullOrEmpty(SearchBook);
+        }
+
+        private void OnSearchBook(object obj)
+        {
+            var bookService = new GoogleBooksService();
+            var book = bookService.GetFirstBook(searchBook);
+            SearchBook = book.Id + " " + book.Link;
         }
 
         private bool ValidateSave()
@@ -43,8 +59,15 @@ namespace JournalToGo.ViewModels
             set => SetProperty(ref dailyThoughtsText, value);
         }
 
+        public string SearchBook
+        {
+            get => searchBook;
+            set => SetProperty(ref searchBook, value);
+        }
+
         public Command SaveCommand { get; }
         public Command CancelCommand { get; }
+        public Command SearchCommand { get; set; }
 
         private async void OnCancel()
         {

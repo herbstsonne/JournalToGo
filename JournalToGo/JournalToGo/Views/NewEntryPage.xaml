@@ -11,6 +11,8 @@
             <DatePicker Date="{Binding Day, Mode=TwoWay}" FontAttributes="Bold"/>
             <Entry Placeholder="Your day in one word" Text="{Binding Headline, Mode=TwoWay}" FontSize="Medium" />
             <Editor Placeholder="How are you?"  Text="{Binding DailyThoughtsText, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+            <Editor Placeholder="Search a book on google" Text="{Binding SearchBook, Mode=TwoWay}" AutoSize="TextChanges" />
+            <Button Text="Search" Command="{Binding SearchCommand}"></Button>
             <StackLayout Orientation="Horizontal">
                 <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
                 <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>

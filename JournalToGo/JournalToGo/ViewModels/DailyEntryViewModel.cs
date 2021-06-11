@@ -1,6 +1,4 @@
-﻿using JournalToGo.Services;
-using JournalToGo.Views;
-using System;
+﻿using System;
 using System.Diagnostics;
 using Xamarin.Forms;
 
