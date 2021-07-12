@@ -3,12 +3,10 @@ using Google.Apis.Books.v1.Data;
 using Google.Apis.Services;
 using JournalToGo.Models;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Net.Http;
-using System.Text;
+using System.Linq;
+using System.Reflection;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace JournalToGo.Services
 {
@@ -45,12 +43,30 @@ namespace JournalToGo.Services
 
         private string LoadKeyFromJson()
         {
-            Console.WriteLine(Environment.CurrentDirectory);
-            using (var reader = new StreamReader(Environment.CurrentDirectory + @"../appsettings.json"))
+            string apiKey = null;
+
+            try
             {
-                var json = reader.ReadToEnd();
-                return JsonSerializer.Deserialize<string>(json);
+                using (var reader = new StreamReader(GetStreamOfResource("appsettings.json")))
+                {
+                    var json = reader.ReadToEnd();
+                    apiKey = JsonSerializer.Deserialize<string>(json);
+                }
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
+            return apiKey;
+        }
+
+        private Stream GetStreamOfResource(string name)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            var appSettings = assembly.GetManifestResourceNames().ToList();
+            var resource = appSettings.FirstOrDefault(x => x.Contains(name));
+            return assembly.GetManifestResourceStream(resource);
         }
     }
 }

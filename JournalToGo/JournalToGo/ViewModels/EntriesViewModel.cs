@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Xamarin.Forms;
 
 namespace JournalToGo.ViewModels
@@ -39,7 +40,9 @@ namespace JournalToGo.ViewModels
             {
                 Entries.Clear();
                 //var items = await DataStore.GetEntriesAsync(true);
-                var items = _journalContext.JournalEntry.ToList().OrderByDescending(l => Convert.ToDateTime(l.Day));
+                var items = await _journalContext.JournalEntry.ToListAsync(); 
+                items.OrderByDescending(l => Convert.ToDateTime(l.Day));
+
                 foreach (var item in items)
                 {
                     Entries.Add(item);

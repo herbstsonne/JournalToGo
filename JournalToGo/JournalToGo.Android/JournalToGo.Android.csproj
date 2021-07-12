@@ -66,6 +66,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidAsset Include="Assets\67089-bell-alert.json" />
+    <AndroidAsset Include="Assets\18332-create-a-shot-list.json" />
+    <AndroidAsset Include="Assets\67210-writing-blue-bg.json" />
+    <AndroidAsset Include="Assets\53995-dott-prof.json" />
+    <AndroidAsset Include="Assets\63608-story.json" />
+    <AndroidAsset Include="Assets\54102-sunrise-breathe-in-breathe-out.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />

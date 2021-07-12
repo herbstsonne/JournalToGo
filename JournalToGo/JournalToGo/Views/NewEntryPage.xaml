@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              x:Class="JournalToGo.Views.NewEntryPage"
              Shell.PresentationMode="ModalAnimated"
              Title="New Item"
@@ -8,6 +9,15 @@
              ios:Page.UseSafeArea="true">
     <ContentPage.Content>
         <StackLayout Spacing="3" Padding="15">
+
+            <forms:AnimationView
+                x:Name="animationView"
+                Animation="54102-sunrise-breathe-in-breathe-out.json"
+                AnimationSource="AssetOrBundle"
+                RepeatCount="3"
+                RepeatMode="Restart"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand" />
             <DatePicker Date="{Binding Day, Mode=TwoWay}" FontAttributes="Bold"/>
             <Entry Placeholder="Your day in one word" Text="{Binding Headline, Mode=TwoWay}" FontSize="Medium" />
             <Editor Placeholder="How are you?"  Text="{Binding DailyThoughtsText, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
