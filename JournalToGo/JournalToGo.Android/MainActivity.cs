@@ -4,6 +4,8 @@ using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+using Android.Views;
+using Android.Widget;
 
 namespace JournalToGo.Droid
 {
@@ -18,6 +20,18 @@ namespace JournalToGo.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
+
+
+            //this.SetContentView(Resource.Layout.widget_newentry);
+            //EditText edittext = FindViewById<EditText>(Resource.Id.newentrytext);
+            //edittext.KeyPress += (object sender, View.KeyEventArgs e) => {
+            //    e.Handled = false;
+            //    if (e.Event.Action == KeyEventActions.Down && e.KeyCode == Keycode.Enter)
+            //    {
+            //        Toast.MakeText(this, edittext.Text, ToastLength.Short).Show();
+            //        e.Handled = true;
+            //    }
+            //};
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
