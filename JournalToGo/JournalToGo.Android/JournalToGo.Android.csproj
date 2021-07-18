@@ -79,6 +79,7 @@
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\drawable\writing.png" />
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\mipmap-anydpi-v26\icon.xml" />
@@ -110,9 +111,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\xml\widget_newentry.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\widget_message.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\widget_newentry.xml" />

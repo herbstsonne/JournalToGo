@@ -3,5 +3,4 @@
 <resources>
   <string name="app_name">Journal To Go</string>
   <string name="widget_name">New Entry Widget</string>
-  <string name="widget_loading">Loading latest\nblog post\u2026</string>
 </resources>

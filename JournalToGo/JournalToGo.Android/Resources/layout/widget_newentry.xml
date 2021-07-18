@@ -1,18 +1,18 @@
-﻿<?xml version="1.0" encoding="utf-8" ?> 
+﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/widget"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:focusable="true"
-    style="@style/WidgetBackground">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/widget"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              style="@style/WidgetBackground">
     <ImageView
-        android:id="@+id/icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:src="@drawable/star_logo"
-        android:contentDescription="description" />
+            android:id="@+id/icon"
+            android:layout_width="90dp"
+            android:layout_height="93dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/writing"
+            android:contentDescription="description"/>
     <TextView
         android:id="@+id/blog_title"
         android:layout_width="wrap_content"
@@ -23,31 +23,12 @@
         android:singleLine="true"
         android:ellipsize="end"
         style="@style/Text.BlogTitle" />
-    <TextView
-        android:id="@+id/bullet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/blog_title"
-        android:paddingRight="4dip"
-        android:includeFontPadding="false"
-        android:singleLine="true"
-        style="@style/BulletPoint" />
-    <TextView
-        android:id="@+id/creator"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/blog_title"
-        android:layout_toRightOf="@id/bullet"
-        android:paddingRight="5dip"
-        android:paddingBottom="4dip"
-        android:includeFontPadding="false"
-        android:maxLines="4"
-        android:fadingEdge="vertical"
-        style="@style/Text.Creator" />
-    <EditText
-     android:id="@+id/newentrytext"
-     android:imeOptions="actionGo"
-     android:layout_height="wrap_content"
-     android:layout_width="match_parent"
-     android:inputType="text"/>
-</RelativeLayout>
+ 
+    <Button
+            android:id="@+id/newentrybuttonsave"
+            android:layout_height="48dp"
+            android:layout_width="85dp"
+            android:text="Save new entry"
+    />
+        
+</LinearLayout>
