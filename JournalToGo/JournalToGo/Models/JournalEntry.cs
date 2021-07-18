@@ -8,5 +8,7 @@ namespace JournalToGo.Models
         public string Day { get; set; }
         public string Headline { get; set; }
         public string DailyThoughtsText { get; set; }
+        
+        public bool CreatedByWidget { get; set; }
     }
 }
