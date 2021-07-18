@@ -20,7 +20,6 @@ namespace JournalToGo.Views
         {
             base.OnAppearing();
             _viewModel.OnAppearing();
-            DisplayAlert("Login", "Login successful", "OK");
         }
 
         private void ToolbarItem_OnClicked(object sender, EventArgs e)

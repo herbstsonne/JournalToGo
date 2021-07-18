@@ -23,11 +23,11 @@
         android:singleLine="true"
         android:ellipsize="end"
         style="@style/Text.BlogTitle" />
- 
+
     <Button
             android:id="@+id/newentrybuttonsave"
-            android:layout_height="48dp"
-            android:layout_width="85dp"
+            android:layout_height="54dp"
+            android:layout_width="259dp"
             android:text="Save new entry"
     />
         
