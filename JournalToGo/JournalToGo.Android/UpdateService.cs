@@ -2,47 +2,41 @@
 using Android.Appwidget;
 using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
 using Android.Widget;
-using JournalToGo.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using JournalToGo.Services;
 
 namespace JournalToGo.Droid
 {
+    [Service]
     public class UpdateService : Service
     {
-        public override void OnStart(Intent intent, int startId)
-        {
-            RemoteViews updateViews = buildUpdate(this);
+        public static RemoteViews updateViews;
 
-            ComponentName thisWidget = new ComponentName(this, Java.Lang.Class.FromType(typeof(NewEntryWidget)).Name);
-            AppWidgetManager manager = AppWidgetManager.GetInstance(this);
-            manager.UpdateAppWidget(thisWidget, updateViews);
+        public override StartCommandResult OnStartCommand (Intent intent, StartCommandFlags flags, int startId)
+        {
+            using (RemoteViews updateViews = buildUpdate (this)) {
+                // Push update for this widget to the home screen
+                ComponentName thisWidget = new ComponentName (this, Java.Lang.Class.FromType (typeof (NewEntryWidget)).Name);
+                AppWidgetManager manager = AppWidgetManager.GetInstance (this);
+                manager.UpdateAppWidget (thisWidget, updateViews);
+            }
+            return StartCommandResult.Sticky;
         }
 
-        private RemoteViews buildUpdate(Context context)
-        {
-            var entry = new JournalEntry()
-            {
-                Day = DateTime.Now.ToShortDateString(),
-                Headline = "Hello Widget",
-                DailyThoughtsText = "Thoughts"
-            };
-
-            var updateViews = new RemoteViews(context.PackageName, Resource.Layout.widget_newentry);
-
-            updateViews.SetTextViewText(Resource.Id.blog_title, entry.Headline);
-
-            return updateViews;
-        }
-
-        public override IBinder OnBind(Intent intent)
+        public override IBinder OnBind (Intent intent)
         {
             return null;
+        }
+
+        private RemoteViews buildUpdate (Context context)
+        {
+            updateViews = new RemoteViews (context.PackageName, Resource.Layout.widget_newentry);
+
+            Intent configIntent = new Intent (context, typeof (MainActivity));
+            PendingIntent configPendingIntent = PendingIntent.GetActivity (context, 0, configIntent, 0);
+            updateViews.SetOnClickPendingIntent (Resource.Id.blog_title, configPendingIntent);
+
+            return updateViews;
         }
     }
 }

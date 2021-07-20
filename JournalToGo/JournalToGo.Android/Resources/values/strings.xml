@@ -3,4 +3,6 @@
 <resources>
   <string name="app_name">Journal To Go</string>
   <string name="widget_name">New Entry Widget</string>
+  <string name="blog_title">Test headline</string>
+  <string name="button_save">Save new entry</string>
 </resources>

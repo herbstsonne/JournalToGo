@@ -14,21 +14,22 @@
             android:src="@drawable/writing"
             android:contentDescription="description"/>
     <TextView
-        android:id="@+id/blog_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dip"
-        android:layout_marginBottom="1dip"
-        android:includeFontPadding="false"
-        android:singleLine="true"
-        android:ellipsize="end"
-        style="@style/Text.BlogTitle" />
+            android:id="@+id/blog_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10px"
+            android:includeFontPadding="false"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:text="@string/blog_title"
+            style="@android:style/Widget.EditText"
+            android:clickable="true"/>
 
     <Button
             android:id="@+id/newentrybuttonsave"
-            android:layout_height="54dp"
-            android:layout_width="259dp"
-            android:text="Save new entry"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/button_save"
     />
-        
+
 </LinearLayout>
