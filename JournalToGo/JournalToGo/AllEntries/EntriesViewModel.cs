@@ -1,15 +1,14 @@
-﻿using JournalToGo.Models;
-using JournalToGo.Services;
-using JournalToGo.Views;
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using JournalToGo.DailyEntries;
+using JournalToGo.NewEntries;
 using Microsoft.EntityFrameworkCore;
 using Xamarin.Forms;
 
-namespace JournalToGo.ViewModels
+namespace JournalToGo.AllEntries
 {
     public class EntriesViewModel : BaseViewModel
     {
@@ -64,7 +63,7 @@ namespace JournalToGo.ViewModels
             SelectedItem = null;
         }
 
-        public Models.JournalEntry SelectedItem
+        public JournalEntry SelectedItem
         {
             get => _selectedItem;
             set
@@ -79,7 +78,7 @@ namespace JournalToGo.ViewModels
             await Shell.Current.GoToAsync(nameof(NewEntryPage));
         }
 
-        async void OnItemSelected(Models.JournalEntry item)
+        async void OnItemSelected(JournalEntry item)
         {
             if (item == null)
                 return;

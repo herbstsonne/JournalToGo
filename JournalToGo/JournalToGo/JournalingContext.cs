@@ -1,9 +1,8 @@
-﻿using JournalToGo.Models;
+﻿using System.IO;
 using Microsoft.EntityFrameworkCore;
-using System.IO;
 using Xamarin.Essentials;
 
-namespace JournalToGo.Services
+namespace JournalToGo
 {
     public class JournalingContext : DbContext
     {

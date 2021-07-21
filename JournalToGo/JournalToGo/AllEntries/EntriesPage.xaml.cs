@@ -1,9 +1,7 @@
 ﻿using System;
-using JournalToGo.Services;
-using JournalToGo.ViewModels;
 using Xamarin.Forms;
 
-namespace JournalToGo.Views
+namespace JournalToGo.AllEntries
 {
     public partial class EntriesPage : ContentPage
     {

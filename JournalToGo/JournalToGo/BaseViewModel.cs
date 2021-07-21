@@ -1,27 +1,18 @@
-﻿using JournalToGo.Models;
-using JournalToGo.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
-namespace JournalToGo.ViewModels
+namespace JournalToGo
 {
     public class BaseViewModel : INotifyPropertyChanged, IDisposable
     {
-        private IDataStore<JournalEntry> _dataStore;
         protected readonly JournalingContext _journalContext;
 
         public BaseViewModel()
         {
             _journalContext = new JournalingContext();
-        }
-
-        public IDataStore<JournalEntry> DataStore
-        {
-            get => _dataStore == null ? _dataStore = DependencyService.Get<IDataStore<JournalEntry>>() : _dataStore;
-            set { _dataStore = value; }
         }
 
         bool isBusy = false;

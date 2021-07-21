@@ -1,6 +1,4 @@
-﻿using JournalToGo.Services;
-using JournalToGo.Views;
-using System;
+﻿using System;
 using Xamarin.Forms;
 
 namespace JournalToGo
@@ -12,7 +10,6 @@ namespace JournalToGo
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
         }
 

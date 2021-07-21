@@ -1,11 +1,7 @@
-﻿using JournalToGo.Services;
-using JournalToGo.Views;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using JournalToGo.AllEntries;
 using Xamarin.Forms;
 
-namespace JournalToGo.ViewModels
+namespace JournalToGo.Login
 {
     public class LoginViewModel : BaseViewModel
     {

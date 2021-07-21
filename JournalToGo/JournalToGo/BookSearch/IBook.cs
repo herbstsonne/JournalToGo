@@ -1,4 +1,4 @@
-﻿namespace JournalToGo.Models
+﻿namespace JournalToGo.BookSearch
 {
     public interface IBook
     {

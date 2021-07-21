@@ -1,5 +1,6 @@
-﻿using JournalToGo.Views;
-using System;
+﻿using System;
+using JournalToGo.DailyEntries;
+using JournalToGo.NewEntries;
 using Xamarin.Forms;
 
 namespace JournalToGo

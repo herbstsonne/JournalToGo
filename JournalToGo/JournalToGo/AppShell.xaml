@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       xmlns:local="clr-namespace:JournalToGo.Views"
+       xmlns:allEntries="clr-namespace:JournalToGo.AllEntries;assembly=JournalToGo"
+       xmlns:login="clr-namespace:JournalToGo.Login;assembly=JournalToGo"
        Title="JournalToGo"
        x:Class="JournalToGo.AppShell">
 
@@ -83,7 +84,7 @@
         <ShellContent Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
     </FlyoutItem>-->
     <FlyoutItem Title="Your entries" Icon="icon_feed.png">
-        <ShellContent Route="EntriesPage" ContentTemplate="{DataTemplate local:EntriesPage}" />
+        <ShellContent Route="EntriesPage" ContentTemplate="{DataTemplate allEntries:EntriesPage}" />
     </FlyoutItem>
 
     <!-- When the Flyout is visible this will be a menu item you can tie a click behavior to  -->
@@ -98,7 +99,7 @@
         await Shell.Current.GoToAsync("//LoginPage");
     -->
     <TabBar>
-        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
+        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate login:LoginPage}" />
     </TabBar>
 
     <!-- Optional Templates 

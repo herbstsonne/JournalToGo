@@ -4,8 +4,7 @@ using Android.App;
 using Android.Appwidget;
 using Android.Content;
 using Android.Widget;
-using JournalToGo.Models;
-using JournalToGo.Services;
+using JournalToGo.NewEntries;
 using Xamarin.Forms.Platform.Android;
 
 namespace JournalToGo.Droid
@@ -17,7 +16,9 @@ namespace JournalToGo.Droid
     public class NewEntryWidget : AppWidgetProvider
     {
         public static string ACTION_WIDGET_NEWENTRYSAVE = "Enter new entry";
-        private readonly JournalingContext _journalContext = new JournalingContext();
+
+        private INewEntryDataEnabler _newEntryDataEnabler = new NewEntryDataEnabler(new JournalingContext());
+        
         private RemoteViews widgetView;
         public override void OnUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds)
         {
@@ -61,21 +62,12 @@ namespace JournalToGo.Droid
         {
             base.OnReceive(context, intent);
 
-            if (intent.Action != null && intent.Action.Equals("APPWIDGET_UPDATE"))
-            {
-                //Get the newest journal entry of today
-                var newestEntry = _journalContext.JournalEntry?.OrderByDescending(e => e.Id).FirstOrDefault(e => e.Day.Equals(DateTime.Now.ToShortDateString()));
-                //display the Headline and the date 
-                if (newestEntry != null)
-                {
-                    widgetView.SetTextViewText(Resource.Id.blog_title, newestEntry.Headline);
-                }
-            }
-            else if (ACTION_WIDGET_NEWENTRYSAVE.Equals(intent.Action))
+            if (ACTION_WIDGET_NEWENTRYSAVE.Equals(intent.Action))
             {
                 try
                 {
-                    SaveNewEntry();
+                    var entry = JournalEntryFactory.Create(DateTime.Now, "Test widget", "Test");
+                    _newEntryDataEnabler.Save(entry);
                     Toast.MakeText(context, "New entry saved", ToastLength.Short).Show();
                 }
                 catch (Exception e)
@@ -84,20 +76,6 @@ namespace JournalToGo.Droid
                     Toast.MakeText(context, "New entry could not be saved", ToastLength.Short).Show();
                 }
             }
-        }
-
-        private void SaveNewEntry()
-        {
-            var newItem = new JournalEntry()
-            {
-                Id = Guid.NewGuid().ToString(),
-                Day = DateTime.Now.ToShortDateString(),
-                Headline = "Test entry",
-                DailyThoughtsText = "Created in widget",
-                CreatedByWidget = true
-            };
-            _journalContext.JournalEntry.Add(newItem);
-            _journalContext.SaveChanges();
         }
     }
 }

@@ -24,14 +24,21 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\DailyEntryPage.xaml.cs">
-      <DependentUpon>DailyEntryPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\EntriesPage.xaml.cs">
-      <DependentUpon>EntriesPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\NewEntryPage.xaml.cs">
+    <Compile Update="NewEntries\NewEntryPage.xaml.cs">
       <DependentUpon>NewEntryPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AllEntries\EntriesPage.xaml.cs">
+      <DependentUpon>EntriesPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="DailyEntries\DailyEntryPage.xaml.cs">
+      <DependentUpon>DailyEntryPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Login\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
 </Project>

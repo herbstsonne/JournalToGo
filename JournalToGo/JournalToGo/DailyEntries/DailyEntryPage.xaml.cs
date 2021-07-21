@@ -1,8 +1,6 @@
-﻿using JournalToGo.Services;
-using JournalToGo.ViewModels;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
-namespace JournalToGo.Views
+namespace JournalToGo.DailyEntries
 {
     public partial class DailyEntryPage : ContentPage
     {

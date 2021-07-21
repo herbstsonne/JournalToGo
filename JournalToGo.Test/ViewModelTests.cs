@@ -1,19 +1,27 @@
 ﻿using System;
-using System.Linq;
 using System.Threading.Tasks;
-using JournalToGo.ViewModels;
 using NSubstitute;
 using NUnit.Framework;
 using Xamarin.Forms;
-using JournalToGo.Services;
 using Xamarin.Forms.Internals;
 using FakeItEasy;
+using Google.Apis.Util.Store;
+using JournalToGo.DailyEntries;
+using JournalToGo.Login;
+using JournalToGo.Test.Mocks;
+using JournalToGo.NewEntries;
 
 namespace JournalToGo.Test
 {
     public class ViewModelTests
     {
         private IPlatformServices _platformServicesFake;
+        private IDataStore _dataStore;
+
+        public ViewModelTests(IDataStore dataStore)
+        {
+            _dataStore = dataStore;
+        }
 
         [SetUp]
         public void Setup()
@@ -33,15 +41,15 @@ namespace JournalToGo.Test
         public async Task Check_if_new_entry_is_created()
         {
             var _viewModel = Substitute.For<NewEntryViewModel>();
-            
-            _viewModel.DataStore = new MockDataStore();
-            var entriesBefore = await _viewModel.DataStore.GetEntriesAsync();
+
+            _dataStore = new MockDataStore();
+            var entriesBefore = await _dataStore.GetEntriesAsync();
 
             Assert.That(entriesBefore.Count(), Is.EqualTo(6));
 
             _viewModel.SaveCommand.Execute(null);
 
-            var entriesAfter = await _viewModel.DataStore.GetEntriesAsync();
+            var entriesAfter = await _dataStore.GetEntriesAsync();
 
             Assert.That(entriesAfter.Count(), Is.EqualTo(7));
         }
@@ -50,9 +58,9 @@ namespace JournalToGo.Test
         public async Task Check_if_entry_was_updated()
         {
             var viewModel = Substitute.For<DailyEntryViewModel>();
-            viewModel.DataStore = new MockDataStore();
+            _dataStore = new MockDataStore();
 
-            var allEntries = await viewModel.DataStore.GetEntriesAsync();
+            var allEntries = await _dataStore.GetEntriesAsync();
             var firstEntry = allEntries.FirstOrDefault();
 
             Assert.That(firstEntry.Day, Is.EqualTo("01.05.2021"));
@@ -66,7 +74,7 @@ namespace JournalToGo.Test
 
             viewModel.SaveEntryCommand.Execute(null);
 
-            var firstEntryNew = await viewModel.DataStore.GetEntryAsync(viewModel.ItemId);
+            var firstEntryNew = await _dataStore.GetEntryAsync(viewModel.ItemId);
             
             Assert.That(firstEntryNew.Day, Is.EqualTo(viewModel.Day));
             Assert.That(firstEntryNew.Headline, Is.EqualTo("test"));

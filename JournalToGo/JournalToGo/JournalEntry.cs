@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace JournalToGo.Models
+﻿namespace JournalToGo
 {
     public class JournalEntry
     {

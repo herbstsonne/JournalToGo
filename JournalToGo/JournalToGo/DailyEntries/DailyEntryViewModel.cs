@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using Xamarin.Forms;
 
-namespace JournalToGo.ViewModels
+namespace JournalToGo.DailyEntries
 {
     [QueryProperty(nameof(ItemId), nameof(ItemId))]
     public class DailyEntryViewModel : BaseViewModel
@@ -12,7 +12,7 @@ namespace JournalToGo.ViewModels
         private string headline;
         private string dailyThoughtsText;
 
-        private Models.JournalEntry savedEntry;
+        private JournalEntry savedEntry;
 
         public DailyEntryViewModel()
         {

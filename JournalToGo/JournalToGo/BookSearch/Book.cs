@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace JournalToGo.Models
+﻿namespace JournalToGo.BookSearch
 {
     public class Book : IBook
     {

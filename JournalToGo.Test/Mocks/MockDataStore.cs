@@ -1,10 +1,9 @@
-﻿using JournalToGo.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace JournalToGo.Services
+namespace JournalToGo.Test.Mocks
 {
     public class MockDataStore : IDataStore<JournalEntry>
     {

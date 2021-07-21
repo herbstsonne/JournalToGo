@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace JournalToGo.Services
+namespace JournalToGo.Test.Mocks
 {
     public interface IDataStore<T>
     {

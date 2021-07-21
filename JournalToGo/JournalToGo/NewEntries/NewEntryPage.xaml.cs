@@ -1,11 +1,10 @@
-﻿using JournalToGo.ViewModels;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
-namespace JournalToGo.Views
+namespace JournalToGo.NewEntries
 {
     public partial class NewEntryPage : ContentPage
     {
-        public Models.JournalEntry Entry { get; set; }
+        public JournalEntry Entry { get; set; }
 
         public NewEntryPage()
         {

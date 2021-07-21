@@ -3,7 +3,6 @@ using Android.Appwidget;
 using Android.Content;
 using Android.OS;
 using Android.Widget;
-using JournalToGo.Services;
 
 namespace JournalToGo.Droid
 {

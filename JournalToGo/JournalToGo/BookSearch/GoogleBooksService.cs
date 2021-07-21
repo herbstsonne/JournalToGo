@@ -1,14 +1,13 @@
-﻿using Google.Apis.Books.v1;
-using Google.Apis.Books.v1.Data;
-using Google.Apis.Services;
-using JournalToGo.Models;
-using System;
+﻿using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text.Json;
+using Google.Apis.Books.v1;
+using Google.Apis.Books.v1.Data;
+using Google.Apis.Services;
 
-namespace JournalToGo.Services
+namespace JournalToGo.BookSearch
 {
     public class GoogleBooksService
     {
