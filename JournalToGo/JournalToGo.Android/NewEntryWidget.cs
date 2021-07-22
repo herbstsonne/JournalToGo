@@ -14,8 +14,6 @@ namespace JournalToGo.Droid
     public class NewEntryWidget : AppWidgetProvider
     {
         public static string ACTION_WIDGET_NEWENTRYSAVE = "Enter new entry";
-
-        private INewEntryDataAccessor _newEntryDataAccessor = new NewEntryDataAccessor(new JournalingContext());
         
         private RemoteViews widgetView;
         public override void OnUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds)
@@ -38,7 +36,7 @@ namespace JournalToGo.Droid
             try
             {
                 var entry = JournalEntryFactory.Create(DateTime.Now, "Test widget", "Test");
-                _newEntryDataAccessor.Save(entry);
+                new NewEntryDataAccessor(new JournalingContext()).Save(entry);
                 Toast.MakeText(context, "New entry saved", ToastLength.Short).Show();
             }
             catch (Exception e)

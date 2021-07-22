@@ -14,11 +14,9 @@ namespace JournalToGo.AllEntries
         {
             _context = context;
         }
-        public async Task<List<JournalEntry>> GetAllEntries(List<JournalEntry> entries)
+        public List<JournalEntry> GetAllEntries(List<JournalEntry> entries)
         {
-            entries.Clear();
-            //var items = await DataStore.GetEntriesAsync(true);
-            var items = await _context.JournalEntry.ToListAsync(); 
+            var items = _context.JournalEntry.ToList(); 
             items.OrderByDescending(l => Convert.ToDateTime(l.Day));
 
             foreach (var item in items)
@@ -29,9 +27,9 @@ namespace JournalToGo.AllEntries
             return entries;
         }
 
-        public async Task<JournalEntry> GetLatestEntry()
+        public JournalEntry GetLatestEntry()
         {
-            var allEntries = await GetAllEntries(new List<JournalEntry>());
+            var allEntries = GetAllEntries(new List<JournalEntry>());
             return allEntries.FirstOrDefault();
         }
     }

@@ -5,7 +5,7 @@ namespace JournalToGo.AllEntries
 {
     public interface IAllEntriesDataAccessor
     {
-        Task<List<JournalEntry>> GetAllEntries(List<JournalEntry> entries);
-        Task<JournalEntry> GetLatestEntry();
+        List<JournalEntry> GetAllEntries(List<JournalEntry> entries);
+        JournalEntry GetLatestEntry();
     }
 }

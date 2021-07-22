@@ -31,18 +31,15 @@ namespace JournalToGo.Droid
         {
             widgetView = new RemoteViews (context.PackageName, Resource.Layout.widget_newentry);
 
-            Task.Run(async () =>
-            {
-                await ShowAppData();
-            });
+            ShowAppData();
             RegisterClicks(context);
             
             return widgetView;
         }
 
-        private async Task ShowAppData()
+        private void ShowAppData()
         {
-            var latestEntry = await new AllEntriesDataAccessor(new JournalingContext()).GetLatestEntry();
+            var latestEntry = new AllEntriesDataAccessor(new JournalingContext()).GetLatestEntry();
             widgetView.SetTextViewText(Resource.Id.day, latestEntry.Day);
             widgetView.SetTextViewText(Resource.Id.blog_title, latestEntry.Headline);
         }

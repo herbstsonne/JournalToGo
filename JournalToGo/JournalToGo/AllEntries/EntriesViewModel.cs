@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
@@ -40,7 +41,8 @@ namespace JournalToGo.AllEntries
 
             try
             {
-                var currentEntries = await _entriesDataAccessor.GetAllEntries(Entries.ToList());
+                Entries.Clear();
+                var currentEntries = _entriesDataAccessor.GetAllEntries(new List<JournalEntry>());
                 foreach (var entry in currentEntries)
                 {
                     Entries.Add(entry);
