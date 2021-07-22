@@ -1,8 +1,10 @@
-﻿using Android.App;
+﻿using System.Threading.Tasks;
+using Android.App;
 using Android.Appwidget;
 using Android.Content;
 using Android.OS;
 using Android.Widget;
+using JournalToGo.AllEntries;
 
 namespace JournalToGo.Droid
 {
@@ -11,6 +13,7 @@ namespace JournalToGo.Droid
     {
         public static RemoteViews widgetView;
         public static string ACTION_WIDGET_NEWENTRYSAVE = "Enter new entry";
+        private AllEntriesDataAccessor _dataAccessor;
 
         public override StartCommandResult OnStartCommand (Intent intent, StartCommandFlags flags, int startId)
         {
@@ -27,11 +30,21 @@ namespace JournalToGo.Droid
         {
             widgetView = new RemoteViews (context.PackageName, Resource.Layout.widget_newentry);
 
+            Task.Run(async () =>
+            {
+                await ShowAppData();
+            });
             RegisterClicks(context);
             
             return widgetView;
         }
-        
+
+        private async Task ShowAppData()
+        {
+            var latestEntry = await new AllEntriesDataAccessor(new JournalingContext()).GetLatestEntry();
+            widgetView.SetTextViewText(Resource.Id.blog_title, latestEntry.Headline);
+        }
+
         private void RegisterClicks(Context context)
         {
             var activityIntent = new Intent (context, typeof (MainActivity));

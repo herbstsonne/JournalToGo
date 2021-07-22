@@ -10,7 +10,7 @@ namespace JournalToGo.NewEntries
         private string _headline;
         private string _dailyThoughtsText;
         private string _searchBook;
-        private INewEntryDataEnabler _newEntryhandler;
+        private INewEntryDataAccessor _newEntryhandler;
         private BookSearcher _bookSearcher;
 
         public DateTime Day
@@ -43,7 +43,7 @@ namespace JournalToGo.NewEntries
         
         public NewEntryViewModel()
         {
-            _newEntryhandler = new NewEntryDataEnabler(_journalContext);
+            _newEntryhandler = new NewEntryDataAccessor(_journalContext);
             _bookSearcher = new BookSearcher();
             
             SaveCommand = new Command(OnSave, ValidateSave);

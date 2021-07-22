@@ -21,7 +21,6 @@
             android:includeFontPadding="false"
             android:singleLine="true"
             android:ellipsize="end"
-            android:text="@string/blog_title"
             style="@android:style/Widget.EditText"
             android:clickable="true"/>
 

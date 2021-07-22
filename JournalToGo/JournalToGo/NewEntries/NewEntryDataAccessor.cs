@@ -2,11 +2,11 @@ using System;
 
 namespace JournalToGo.NewEntries
 {
-    public class NewEntryDataEnabler : INewEntryDataEnabler
+    public class NewEntryDataAccessor : INewEntryDataAccessor
     {
         private readonly JournalingContext _context;
 
-        public NewEntryDataEnabler(JournalingContext context)
+        public NewEntryDataAccessor(JournalingContext context)
         {
             _context = context;
         }

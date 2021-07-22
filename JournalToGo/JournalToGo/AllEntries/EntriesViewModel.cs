@@ -12,6 +12,7 @@ namespace JournalToGo.AllEntries
 {
     public class EntriesViewModel : BaseViewModel
     {
+        private readonly AllEntriesDataAccessor _entriesDataAccessor;
         private JournalEntry _selectedItem;
 
         public ObservableCollection<JournalEntry> Entries { get; }
@@ -28,23 +29,21 @@ namespace JournalToGo.AllEntries
             EntryTapped = new Command<JournalEntry>(this.OnItemSelected);
 
             AddEntryCommand = new Command(OnAddItem);
+
+            _entriesDataAccessor = new AllEntriesDataAccessor(_journalContext);
         }
         
 
-        async Task ExecuteLoadItemsCommand()
+        private async Task ExecuteLoadItemsCommand()
         {
             IsBusy = true;
 
             try
             {
-                Entries.Clear();
-                //var items = await DataStore.GetEntriesAsync(true);
-                var items = await _journalContext.JournalEntry.ToListAsync(); 
-                items.OrderByDescending(l => Convert.ToDateTime(l.Day));
-
-                foreach (var item in items)
+                var currentEntries = await _entriesDataAccessor.GetAllEntries(Entries.ToList());
+                foreach (var entry in currentEntries)
                 {
-                    Entries.Add(item);
+                    Entries.Add(entry);
                 }
             }
             catch (Exception ex)
@@ -57,12 +56,6 @@ namespace JournalToGo.AllEntries
             }
         }
 
-        public void OnAppearing()
-        {
-            IsBusy = true;
-            SelectedItem = null;
-        }
-
         public JournalEntry SelectedItem
         {
             get => _selectedItem;
@@ -71,6 +64,12 @@ namespace JournalToGo.AllEntries
                 SetProperty(ref _selectedItem, value);
                 OnItemSelected(value);
             }
+        }
+
+        public void OnAppearing()
+        {
+            IsBusy = true;
+            SelectedItem = null;
         }
 
         private async void OnAddItem(object obj)
