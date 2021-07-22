@@ -13,6 +13,7 @@ namespace JournalToGo.Droid
     {
         public static RemoteViews widgetView;
         public static string ACTION_WIDGET_NEWENTRYSAVE = "Enter new entry";
+        public static string ACTION_WIDGET_OPENAPP = "Open app";
         private AllEntriesDataAccessor _dataAccessor;
 
         public override StartCommandResult OnStartCommand (Intent intent, StartCommandFlags flags, int startId)
@@ -42,6 +43,7 @@ namespace JournalToGo.Droid
         private async Task ShowAppData()
         {
             var latestEntry = await new AllEntriesDataAccessor(new JournalingContext()).GetLatestEntry();
+            widgetView.SetTextViewText(Resource.Id.day, latestEntry.Day);
             widgetView.SetTextViewText(Resource.Id.blog_title, latestEntry.Headline);
         }
 
@@ -49,7 +51,7 @@ namespace JournalToGo.Droid
         {
             var activityIntent = new Intent (context, typeof (MainActivity));
             var configPendingIntent = PendingIntent.GetActivity (context, 0, activityIntent, 0);
-            widgetView.SetOnClickPendingIntent (Resource.Id.blog_title, configPendingIntent);
+            widgetView.SetOnClickPendingIntent (Resource.Id.buttonopenapp, configPendingIntent);
             
             var widgetIntent = new Intent(context, typeof(NewEntryWidget));
             widgetIntent.SetAction(AppWidgetManager.ActionAppwidgetUpdate);

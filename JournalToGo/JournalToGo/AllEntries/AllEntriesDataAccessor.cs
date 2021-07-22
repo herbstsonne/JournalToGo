@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace JournalToGo.AllEntries
 {
-    public class AllEntriesDataAccessor
+    public class AllEntriesDataAccessor : IAllEntriesDataAccessor
     {
         private readonly JournalingContext _context;
 
