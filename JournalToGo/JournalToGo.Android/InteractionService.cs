@@ -40,7 +40,7 @@ namespace JournalToGo.Droid
         private void ShowAppData()
         {
             var latestEntry = new AllEntriesDataAccessor(new JournalingContext()).GetLatestEntry();
-            widgetView.SetTextViewText(Resource.Id.day, latestEntry.Day);
+            widgetView.SetTextViewText(Resource.Id.day, latestEntry.Day.ToShortDateString());
             widgetView.SetTextViewText(Resource.Id.blog_title, latestEntry.Headline);
         }
 

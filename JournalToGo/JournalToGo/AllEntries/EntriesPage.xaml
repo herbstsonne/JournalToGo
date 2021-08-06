@@ -43,7 +43,7 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout Padding="10" x:DataType="journalToGo:JournalEntry">
-                        <Label Text="{Binding Day}" 
+                        <Label Text="{Binding Day, StringFormat='{0:dd. MMMM yyyy}'}" 
                             LineBreakMode="NoWrap" 
                             FontSize="16" />
                         <Label Text="{Binding Headline}" 

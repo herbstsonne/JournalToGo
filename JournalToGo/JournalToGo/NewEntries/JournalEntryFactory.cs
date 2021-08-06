@@ -9,7 +9,7 @@ namespace JournalToGo.NewEntries
             return new JournalEntry()
             {
                 Id = Guid.NewGuid().ToString(),
-                Day = day.ToShortDateString(),
+                Day = day,
                 Headline = headline,
                 DailyThoughtsText = dailyThoughtsText
             };

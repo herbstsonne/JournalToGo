@@ -18,7 +18,7 @@
                 RepeatMode="Restart"
                 VerticalOptions="FillAndExpand"
                 HorizontalOptions="FillAndExpand" />
-            <DatePicker Date="{Binding Day, Mode=TwoWay}" FontAttributes="Bold"/>
+            <DatePicker Date="{Binding Day, StringFormat='{0:dd. MMMM yyyy}', Mode=TwoWay}" FontAttributes="Bold"/>
             <Entry Placeholder="Your day in one word" Text="{Binding Headline, Mode=TwoWay}" FontSize="Medium" />
             <Editor Placeholder="How are you?"  Text="{Binding DailyThoughtsText, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
             <Editor Placeholder="Search a book on google" Text="{Binding SearchBook, Mode=TwoWay}" AutoSize="TextChanges" />

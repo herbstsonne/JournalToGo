@@ -17,7 +17,7 @@ namespace JournalToGo.AllEntries
         public List<JournalEntry> GetAllEntries(List<JournalEntry> entries)
         {
             var items = _context.JournalEntry.ToList(); 
-            items.OrderByDescending(l => Convert.ToDateTime(l.Day));
+            items.Sort((a, b) => DateTime.Compare(a.Day, b.Day));
 
             foreach (var item in items)
             {

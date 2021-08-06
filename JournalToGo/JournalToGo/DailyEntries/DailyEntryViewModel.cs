@@ -8,7 +8,7 @@ namespace JournalToGo.DailyEntries
     public class DailyEntryViewModel : BaseViewModel
     {
         private string itemId;
-        private string day;
+        private DateTime day;
         private string headline;
         private string dailyThoughtsText;
 
@@ -52,15 +52,10 @@ namespace JournalToGo.DailyEntries
 
         public Command SaveEntryCommand { get; }
 
-        public string Day
+        public DateTime Day
         {
             get => day;
-            set
-            {
-                SetProperty(ref day, value);
-                if (day != null)
-                    day = Convert.ToDateTime(day).ToShortDateString();
-            }
+            set => SetProperty(ref day, value);
         }
 
         public string Headline
